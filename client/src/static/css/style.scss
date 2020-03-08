@@ -1,0 +1,238 @@
+// Fonts
+@import './fonts';
+
+$primary: #2873ff;
+
+$secondary: #191a1d;
+$text-primary: #fff;
+// $secondary: #fff;
+// $text-primary: #333;
+
+// Nav Colors
+$nav: $primary;
+$nav-text: #fff;
+
+$nav-height: 60px;
+$sidebar-width: 260px;
+
+$border-primary: 1px solid rgba($color: $text-primary, $alpha: 0.1);
+
+
+*,::before,::after{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html{
+  font-size: 16px;
+  font-family: 'Muli', sans-serif;
+  color: $text-primary;
+}
+
+a{
+  text-decoration: none;
+  color: $primary;
+}
+
+li{
+  list-style: none;
+}
+
+.app{
+  background-color: $secondary;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  grid-template-rows: auto 1fr;
+  grid-template-areas: 
+    "navbar navbar navbar"
+    "sidebar main rightbar";
+}
+// Importing Nav styles
+@import './nav';
+
+// Importing Left Side bar styles
+@import './sidebar';
+
+// Importing Right side bar styles
+@import './rightbar';
+
+.container{
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  grid-area: main;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 40px;
+  /* width */
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  /* Track */
+  &::-webkit-scrollbar-track {
+  }
+  
+  /* Handle */
+  &::-webkit-scrollbar-thumb {
+    background: rgba($color: $text-primary, $alpha: 0.1);
+    border-radius: 10px;
+  }
+
+  /* Handle on hover */
+  &::-webkit-scrollbar-thumb:hover {
+    background: rgba($color: $text-primary, $alpha: 0.3); 
+  }
+  
+  .list-title{
+    margin: 40px 0;
+    h1{
+      font-size: 2rem;
+      font-weight: 700;
+      color: $text-primary; 
+      margin-bottom: 10px;
+    }
+
+    p{
+      font-size: 1rem;
+      font-weight: 300;
+      color: $text-primary;
+      opacity: 0.8;
+    }
+  }
+}
+
+// Task list (ul)
+.tasks{
+  width: 100%;
+  
+  li{
+    border-top: $border-primary;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 20px;
+    // input[type=checkbox]{
+    //   // display: none;
+    // }
+
+    // label{
+    //   cursor: pointer;
+    //   display: flex;
+    //   flex-direction: row;
+    //   align-items: center;
+    //   .circle-icon{
+    //     position: relative;
+    //     min-width: 20px;
+    //     max-width: 20px;
+    //     min-height: 20px;
+    //     max-height: 20px;
+    //     border-radius: 50%;
+    //     border: 2px solid rgba($color: $text-primary, $alpha: 0.2);
+
+    //     .dot{
+    //       position: absolute;
+    //       width: 0%;
+    //       height: 0%;
+    //       background-color: $primary;
+    //       border-radius: 50%;
+    //       top: 50%;
+    //       left: 50%;
+    //       transform: translate(-50%, -50%);
+    //       transition: all ease-in-out 100ms;
+    //     }
+    //   }
+    p{
+      margin: 0 20px;
+      font-size: 1rem;
+      font-weight: 300;
+    }
+    // }
+    .completebtn{
+      cursor: pointer;
+      position: relative;
+      min-width: 20px;
+      max-width: 20px;
+      min-height: 20px;
+      max-height: 20px;
+      background: none;
+      outline: none;
+      border: 2px solid rgba($color: $text-primary, $alpha: 0.2);;
+      border-radius: 50%;
+
+      .inside-circle{
+        position: absolute;
+        width: 0%;
+        height: 0%;
+        background-color: $primary;
+        border-radius: 50%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        transition: all ease-in-out 100ms;
+      }
+    }
+
+    .dltbtn{
+      margin-left: auto;
+      cursor: pointer;
+      min-width: 20px;
+      max-width: 20px;
+      min-height: 20px;
+      max-height: 20px;
+      border-radius: 50%;
+      background-color: #ff2525;
+      color: rgba($color: $secondary, $alpha: 0.5);
+      font-weight: 900;
+      border: none;
+      outline: none;
+    }
+  }
+  // li:nth-last-child(1){
+  //   border-bottom: $border-primary;
+  // }
+}
+
+.add-task-form{
+  position: relative;
+  width: 100%;
+  border-bottom: $border-primary;
+  border-top: $border-primary;
+  paddinG: 20px;
+  input[type=text]{
+    background: $secondary;
+    border: none;
+    outline: none;
+    width: 100%;
+    padding-left: 40px;
+    font-size: 1rem;
+    color: $text-primary;
+    &:placeholder-shown{
+      ~input[type=submit]{
+        pointer-events: none;
+        color: rgba($color: $text-primary, $alpha: 0.2);
+      }
+    }
+  }
+  input[type=submit]{
+    cursor: pointer;
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    outline: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    font-size: 1.7rem;
+    line-height: 0;
+    color: rgba($color: $text-primary, $alpha: 1);
+    transition: all ease-in-out 200ms;
+  }
+}

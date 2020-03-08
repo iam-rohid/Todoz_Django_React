@@ -1,0 +1,7 @@
+#rightbar{
+  overflow: hidden;
+  display: block;
+  max-width: 0px;
+  grid-area: rightbar;
+  border-left: $border-primary;
+}
